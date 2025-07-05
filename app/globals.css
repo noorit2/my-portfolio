@@ -1,5 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap');
 @import "tailwindcss";
-
 
 
 @theme inline{
@@ -21,6 +21,8 @@
   --breakpoint-md: 750px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
+
+  --font-sans: 'Space Grotesk', sans-serif;
 
     /* Font sizes */
     --text-xs: 0.75rem;
@@ -66,6 +68,7 @@
     --accent-400: 93, 60%, 69%;
   }
   
+  
 }
 
 
@@ -88,14 +91,19 @@
 
 }
 
+@utility text-box-trim{
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
 @layer component{
 
   .glass-card{
+    @apply rounded-xl;
     --border-width: 1px;
-    border-radius: 1rem;
     position: relative;
     background: hsl(from hsl(var(--primary-700)) h s l / 0.25);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px);
   }
 
   .glass-card::before{
@@ -111,13 +119,31 @@
       mask-composite: subtract;
   }
   .dark .glass-card::before{
-      background: linear-gradient(hsl(var(--primary-500)), hsl(var(--primary-600))) border-box;
+      background: linear-gradient(hsl(var(--primary-600)), hsl(var(--primary-700))) border-box;
+  }
+  .custom-container {
+    margin-inline: auto;
+    padding-inline: 1rem;
+    max-width: 78.125rem;
+
+    @media (min-width: 640px) {
+      padding-inline: 1.5rem;
+    }
+    @media (min-width: 750px) {
+      padding-inline: 2rem;
+    }
+    @media (min-width: 1024px) {
+      padding-inline: 2.5rem;
+    }
+    @media (min-width: 1280px) {
+      padding-inline: 3rem;
+    }
   }
 }
 
 body{
   @apply text-body-text bg-surface-1 font-sans antialiased text-md;
-
+  background-color: hsl(var(--primary-800));
   background-image:linear-gradient(
     hsl(from hsl(var(--primary-700)) h s l / 0.7) 0 0
   );
@@ -149,11 +175,29 @@ body::before{
   background-image: url(https://images.unsplash.com/photo-1535408190508-be4c21946da6?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDc3NTcyOTB8&ixlib=rb-4.1.0&q=85);
   background-position: top left;
   background-repeat: no-repeat;
-  background-size: 300%;
+  background-size: cover 300%;
   filter: invert(1) brightness(1);
 }
 body.dark::before{
 filter: none;
+}
+
+
+
+.h1 { 
+  @apply text-2xl font-bold leading-[1.15] md:text-3xl lg:text-4xl;
+}
+.h2 {
+  @apply text-[2rem] font-bold leading-[1.25]  md:text-2xl;
+}
+.h3 {
+  @apply text-lg font-bold leading-[1.25] md:text-xl;
+}
+.h4{
+  @apply text-md font-bold leading-[1.25] md:text-lg;
+}
+.h5{
+  @apply text-sm md:text-md leading-[130%];
 }
 
 

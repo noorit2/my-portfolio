@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Navbar, NavbarData } from "@/src/widgets/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +25,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+   <head>
+        {/* ✅ this runs as early as possible and writes class directly to body */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var finalTheme = theme || (prefersDark ? 'dark' : 'light');
+                  document.write('<body class="${geistSans.variable} ${geistMono.variable} antialiased ' + finalTheme + '">');
+                } catch (e) {
+                  document.write('<body class="${geistSans.variable} ${geistMono.variable} antialiased light">');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
+      suppressHydrationWarning
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navbar {...NavbarData} />
         {children}
       </body>
     </html>
