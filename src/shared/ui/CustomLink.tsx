@@ -16,16 +16,16 @@ const CustomLink: FC<CustomLinkProps> = ({
   variant = "outlined",
   title,
   Icon,
-  iconPosition = "right", // Default position is left
+  iconPosition = "left", // Default position is left
   iconSize = "medium", // Default size is medium
   ...props
 }) => {
   return (
     <Link
       className={cn(
-        "px-3 py-2 text-md text-primary-text grid justify-center items-center", // Base styles
+        "px-3 py-2 text-md text-primary-text grid rounded-xl justify-center items-center transition-all duration-200", // Base styles
         variant === "outlined" &&
-          "  glass-card !bg-transparent !backdrop-blur-none hover:bg-surface-3/25! hover:border-white/25 border border-transparent hover:shadow-2xl! ", // Secondary variant
+          "  glass-card !bg-transparent !backdrop-blur-none dark:hover:bg-surface-3/25! enabled-hover hover:bg-surface-2/30!  !border-2 border-transparent  ", // Secondary variant
         variant === "filled" && "glass-card ",
 
         className

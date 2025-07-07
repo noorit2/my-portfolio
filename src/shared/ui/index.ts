@@ -27,7 +27,7 @@ import {
   SheetTitle,
   SheetDescription,
 } from "./Sheet";
-
+import DownloadLink from "./DownloadLink";
 export {
   CustomLink,
   NavigationMenu,
@@ -53,4 +53,5 @@ export {
   SheetFooter,
   SheetTitle,
   SheetDescription,
+  DownloadLink
 };

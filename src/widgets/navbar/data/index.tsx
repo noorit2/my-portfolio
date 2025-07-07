@@ -25,6 +25,6 @@ export const NavbarData: NavbarProps = {
   
     ],
     action : {
-      contanct: { title: "contanct", url: "/Contact" },
+      contanct: { title: "Hire me", url: "/Contact" },
     },
   }

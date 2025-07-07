@@ -32,10 +32,10 @@ function ThemeToggle() {
     return (
         <button
             onClick={toggleTheme}
-            className="px-2 py-2 text-md text-primary-text rounded-[50%] bg-transparent border border-transparent hover:bg-surface-3/25 hover:border-white/25 hover:shadow-2xl"
+            className="px-2 py-2 text-md text-primary-text glass-card enabled-hover rounded-[50%] "
             aria-label="Toggle theme"
         >
-            {currentTheme === 'dark' ? <Moon className="w-4 h-4 " /> : <Sun className="w-4 h-4 " />}
+            {currentTheme === 'dark' ? <Moon className="w-4 h-4 "/> : <Sun className="w-4 h-4 "/>}
         </button>
     );
 }

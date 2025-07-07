@@ -51,7 +51,7 @@ const DesktopNavbar = ({ logo, action, menu }: NavbarProps) => {
         </div>
       </div>
       <div className="flex gap-2 items-center">
-        <CustomLink iconSize="medium" Icon={Mail} iconPosition="left" title={action.contanct.title} href={action.contanct.url} className="text-sm"></CustomLink>
+        <CustomLink iconSize="medium" Icon={Mail} iconPosition="left" title={action.contanct.title} href={action.contanct.url} className="text-sm px-6"></CustomLink>
         <ThemeToggle/>
       </div>
     </nav>
@@ -78,15 +78,15 @@ const renderMenuItem = (item: MenuItem, path: string) => {
   }
 
   return (
-    <NavigationMenuItem key={item.title} className="relative">
+    <NavigationMenuItem key={item.title} className="relative group">
       {isActive && (
-        <div className="text-sm -z-1 font-medium top-0.5 px-4 py-2 glass-card text-transparent !absolute">
+        <div className="text-sm -z-1 font-medium   px-4 py-2 border-1! glass-card text-transparent !absolute">
           {item.title}
         </div>
       )}
       <NavigationMenuLink
         href={item.url}
-        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium  hover:scale-105 transition-all duration-200 ease-in-out"
+        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium border-2 border-transparent  hover:scale-105 transition-all duration-200 ease-in-out"
       >
         <Link href={item.url}>{item.title}</Link>
       </NavigationMenuLink>

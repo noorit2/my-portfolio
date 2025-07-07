@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap');
 @import "tailwindcss";
+@import "tw-animate-css";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline{
   --color-surface-1: hsl(var(--primary-900));
@@ -100,10 +102,13 @@
 
   .glass-card{
     @apply rounded-xl;
-    --border-width: 1px;
+    border-width: 1px;
     position: relative;
     background: hsl(from hsl(var(--primary-700)) h s l / 0.25);
     backdrop-filter: blur(12px);
+    border-color: transparent;
+    transition: all 0.3s ease-in-out;
+
   }
 
   .glass-card::before{
@@ -113,14 +118,54 @@
       inset: 0;
       border-radius: inherit;
       background: linear-gradient(hsl(var(--primary-800)), hsl(var(--primary-900))) border-box;
-      border: var(--border-width) solid transparent;
+      border-style: solid;
+      border-color: transparent;
+      border-width: inherit;
+      transition: all 0.3s ease-in-out;
       mask: linear-gradient(black, black) border-box,
         linear-gradient(black, black) padding-box;
       mask-composite: subtract;
   }
-  .dark .glass-card::before{
-      background: linear-gradient(hsl(var(--primary-600)), hsl(var(--primary-700))) border-box;
+  .glass-card.enabled-hover::before{
+    scale: calc(1.03);
   }
+  .dark .glass-card::before{
+      background: linear-gradient(hsl(var(--primary-500)), hsl(var(--primary-700))) border-box;
+  }
+
+  .glass-card.enabled-hover::after{
+    content: "";
+    position: absolute;
+    left:min(10%,12px);
+    right: min(10%,12px);
+    top: 6px;
+    height: 2px;
+    border-radius: 9px;
+    filter: opacity(0.7) blur(8px);
+    transition: all 0.3s ease-in-out;
+    background:rgba(255, 255, 255, 0.4) ;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 0.5px, rgba(0, 0, 0, 0.1) 0px 3px 5px;
+  }
+
+  .glass-card.enabled-hover:hover{
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .dark .glass-card.enabled-hover:hover{
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+   .glass-card.enabled-hover:hover::after{
+    background-color: white;
+    height: 4px;
+    filter: opacity(1.1) blur(4px);
+  }
+  .dark .glass-card.enabled-hover:hover::after{
+    background: rgba(255,255,255,0.8);
+    height: 4px;
+    filter: opacity(0.7) blur(8px);
+
+  }
+
   .custom-container {
     margin-inline: auto;
     padding-inline: 1rem;
@@ -139,6 +184,33 @@
       padding-inline: 3rem;
     }
   }
+
+  .shiny-text {
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 255, 255, 0) 60%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 5s linear infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: -100%;
+    }
+  }
+  
+  .shiny-text.disabled {
+    animation: none;
+  }
+  
 }
 
 body{
@@ -161,10 +233,11 @@ body::after{
   background-position: top left;
   background-repeat: no-repeat;
   background-size: cover;
+  
 }
 body.dark::after{
   background-image: linear-gradient(
-    hsl(from hsl(var(--primary-700)) h s l / 0.7) 0 0
+    hsl(from hsl(var(--primary-900)) h s l / 0.6) 0 0
   );
 }
 body::before{
@@ -172,17 +245,21 @@ body::before{
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-image: url(https://images.unsplash.com/photo-1535408190508-be4c21946da6?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDc3NTcyOTB8&ixlib=rb-4.1.0&q=85);
   background-position: top left;
   background-repeat: no-repeat;
-  background-size: cover 300%;
-  filter: invert(1) brightness(1);
+  background-size: cover;
+  background-image: url("https://preview.redd.it/ride-the-wave-by-janelle-cummins-3840-2160-v0-31p0zpf6zn4a1.jpg?auto=webp&s=a961c3202e9d11c98f74be4b384c73d3fde71a6d");
+  filter: blur(20px) invert(1);
+
 }
 body.dark::before{
 filter: none;
+filter: blur(17px);
 }
 
-
+.h1, .h2, .h3, .h4, .h5 {
+  @apply font-bold text-primary-text;
+}
 
 .h1 { 
   @apply text-2xl font-bold leading-[1.15] md:text-3xl lg:text-4xl;
