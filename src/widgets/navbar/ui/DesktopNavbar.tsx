@@ -51,7 +51,7 @@ const DesktopNavbar = ({ logo, action, menu }: NavbarProps) => {
         </div>
       </div>
       <div className="flex gap-2 items-center">
-        <CustomLink iconSize="medium" Icon={Mail} iconPosition="left" title={action.contanct.title} href={action.contanct.url} className="text-sm px-6"></CustomLink>
+        <CustomLink variant="filled" iconSize="medium" Icon={Mail} iconPosition="left" title={action.contanct.title} href={action.contanct.url} className="text-sm px-6"></CustomLink>
         <ThemeToggle/>
       </div>
     </nav>

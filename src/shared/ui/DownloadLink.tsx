@@ -27,10 +27,10 @@ const DownloadLink: FC<DownloadLinkProps> = ({
   return (
     <a
       className={cn(
-        "px-3 py-2 text-md text-primary-text grid justify-center items-center transition-all duration-200", // Base styles
+        "px-3 py-2 text-md text-primary-text grid justify-center items-center transition-all duration-200 rounded-lg", // Base styles
         variant === "outlined" &&
           "  glass-card !bg-transparent !backdrop-blur-none enabled-hover dark:hover:bg-surface-3/25! hover:bg-surface-2/30!  !border-3 border-transparent  ", // Secondary variant
-        variant === "filled" && "glass-card ",
+        variant === "filled" && " glass-card enabled-hover  bg-[radial-gradient(circle_at_center,_hsl(var(--primary-900))_0%,_transparent_60%)]! hover:bg-surface-1/30!  dark:bg-[radial-gradient(circle_at_center,_hsl(var(--primary-400))_0%,_transparent_80%)]! dark:hover:bg-accent-1/30!  transition-all duration-200  !border-transparent", // Primary variant
 
         className
       )}
@@ -48,7 +48,7 @@ const DownloadLink: FC<DownloadLinkProps> = ({
         {Icon && (
           <Icon
             className={cn(
-              "w-4 h-4 text-primary-text align-middle",
+              "w-4 h-4 text-primary-text align-middle overflow-clip",
               iconPosition === "left" ? "order-1" : "order-3",
               iconSize === "small"
                 ? "w-3 h-3"

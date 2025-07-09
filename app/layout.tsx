@@ -50,7 +50,23 @@ export default function RootLayout({
       >
         <Navbar {...NavbarData} />
         {children}
+        <svg xmlns="http://www.w3.org/2000/svg" className="hidden">
+  <filter id="purplescale">
+    <feColorMatrix
+      type="matrix"
+      values="
+        0.4 0.2 0.6 0 0
+        0.3 0.2 0.5 0 0
+        0.5 0.3 0.7 0 0
+        0   0   0   1 0
+      "
+    />
+  </filter>
+</svg>
+
+
       </body>
+
     </html>
   );
 }

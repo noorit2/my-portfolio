@@ -26,7 +26,7 @@ const CustomLink: FC<CustomLinkProps> = ({
         "px-3 py-2 text-md text-primary-text grid rounded-xl justify-center items-center transition-all duration-200", // Base styles
         variant === "outlined" &&
           "  glass-card !bg-transparent !backdrop-blur-none dark:hover:bg-surface-3/25! enabled-hover hover:bg-surface-2/30!  !border-2 border-transparent  ", // Secondary variant
-        variant === "filled" && "glass-card ",
+          variant === "filled" && " glass-card enabled-hover  bg-[radial-gradient(circle_at_center,_hsl(var(--primary-900))_0%,_transparent_60%)]! hover:bg-surface-1/60!  dark:bg-[radial-gradient(circle_at_center,_hsl(var(--primary-400))_0%,_transparent_80%)]! dark:hover:bg-accent-1/30!  transition-all duration-200  !border-transparent", // Primary variant
 
         className
       )}

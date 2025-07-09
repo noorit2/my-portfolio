@@ -28,6 +28,8 @@ import {
   SheetDescription,
 } from "./Sheet";
 import DownloadLink from "./DownloadLink";
+import { Tabs,TabsContent,TabsList,TabsTrigger } from "./Tabs";
+
 export {
   CustomLink,
   NavigationMenu,
@@ -53,5 +55,9 @@ export {
   SheetFooter,
   SheetTitle,
   SheetDescription,
-  DownloadLink
+  DownloadLink,
+  Tabs,
+  TabsContent,
+  TabsTrigger,
+  TabsList
 };
